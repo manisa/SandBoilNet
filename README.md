@@ -36,12 +36,12 @@ pip install tensorflow==2.12.*
 ## Folder Structure
 ```
 SandBoilNet/
-	archs/
-	lib/
-	datasets/
+    archs/
+    lib/
+    datasets/
         sandboil_augmented_5_8_23_6853/
         test/
-	models/
+    models/
         IEEE_models/
             Baseline_Conv_bce_dice_loss/
             Baseline_LeakyRI_bce_dice_loss/
