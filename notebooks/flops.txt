@@ -1,6 +1,0 @@
-FLOPS for multiresunet_bce_dice_loss_new: 1.26e+02 G
-FLOPS for nestedunet_bce_dice_loss_new: 2.76e+02 G
-FLOPS for unet_bce_dice_loss_new: 96.7 G
-FLOPS for attentionunet_bce_dice_loss_new: 1.38e+02 G
-FLOPS for baseline_normal_bce_dice_loss_new: 48.1 G
-FLOPS for iterlunet_bce_dice_loss_new: 1.31e+02 G

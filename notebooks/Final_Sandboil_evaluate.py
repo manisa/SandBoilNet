@@ -17,7 +17,6 @@ import tensorflow_addons as tfa
 
 import matplotlib.font_manager
 import matplotlib.pyplot as plt
-#plt.rcParams["font.family"] = "Times New Roman"
 
 import tensorflow as tf
 #import tensorflow_addons as tfa
@@ -48,10 +47,6 @@ class PCALayer(tf.keras.layers.Layer):
 
     def call(self, x):
         # Flatten the input tensor
-        #x = tf.linalg.normalize(x,axis=-1)
-        #print(x.shape)
-        # assumption is that the feature vector is normalized
-        #x = tf.math.l2_normalize(x, axis=-1)
         batch_size = tf.shape(x)[0]
         flattened = tf.reshape(x, [batch_size, -1, self.input_dim])
         
@@ -79,7 +74,6 @@ class PCALayer(tf.keras.layers.Layer):
 
         # Reshape projected data and return as output
         output_shape = tf.concat([tf.shape(x)[:-1], [self.n_components]], axis=0)
-        #output = tf.reshape(projected, shape=(-1, *self.output_shape))
         output = tf.reshape(projected, output_shape)
         return output
 
@@ -119,7 +113,7 @@ def evaluate_model_for_dataset(X_test, Y_test, model, model_name, dataset_name, 
     root_dir = os.path.normpath(os.getcwd() + os.sep + os.pardir)
     tf.keras.backend.clear_session()
     print(f'=========Loaded {model_name} for {dataset_name}===========')
-    #saveResultsOnly(best_model, X_test, 4, result_folder_name)
+    
     results = test_model(model, X_test, Y_test, result_folder_name, dataset_name, threshold)
     print("==========Evaluation Completed============")
 
@@ -132,16 +126,14 @@ def main():
 
     root_dir = os.path.normpath(os.getcwd() + os.sep + os.pardir + os.sep + os.pardir)
     model_dir = os.path.normpath(os.getcwd() + os.sep + os.pardir)
-    model_dir = os.path.join(model_dir+ "/models")
+    model_dir = os.path.join(model_dir+ "/models/IEEE_models/")
     models = os.listdir(model_dir)
 
-    seepage_data = os.path.join(root_dir, "datasets", "test_images", "test") 
-    seepage_images = sorted(next(os.walk(seepage_data + "/images"))[2])
+    sandboil_data = os.path.join(root_dir, "datasets", "test") 
+    sandboil_images = sorted(next(os.walk(sandboil_data + "/images"))[2])
    
 
-    #model_names = [item for item in models if os.path.isdir(os.path.join(model_dir, item))]
-    model_names = ['unet_bce_dice_loss_new','SandBoilNet_4e_4Dropout_bce_dice_loss_new', 'Depthwise_Seepage_Inception_PCA_bce_dice_loss_new',
-                   'nestedunet_bce_dice_loss_new', 'multiresunet_bce_dice_loss_new', 'SandBoilNet_Low_Dimension_PCA_bce_dice_loss_new' ]
+    model_names = [item for item in models if os.path.isdir(os.path.join(model_dir, item))]
     
     
     model_list = []
@@ -150,10 +142,10 @@ def main():
         model_list.append((model, model_name))
 
     
-    X_test_levee, Y_test_levee = get_data(seepage_images, seepage_data, height, width, train=True)
-    #X_test_1, Y_test_1 = get_data(overall_test_images, with_negative_seepage_data, height, width, train=True)
+    X_test_levee, Y_test_levee = get_data(sandboil_images, sandboil_data, height, width, train=True)
     
-    dataset_list = [(X_test_levee, Y_test_levee, 'test_models')]
+    
+    dataset_list = [(X_test_levee, Y_test_levee, 'IEEE_models_evaluation')]
     threshold=0.5
 
     for model, model_name in model_list:
