@@ -33,6 +33,19 @@ pip install tensorflow==2.12.*
 
 ```
 
+
+
+## Download datasets
+- [Original Training Data](https://cs.uno.edu/~mpanta1/SandBoilNet/datasets/train.zip) 
+- [Original Test Data](https://cs.uno.edu/~mpanta1/SandBoilNet/datasets/test.zip) 
+- [Augmented Train and Validation Data](https://cs.uno.edu/~mpanta1/SandBoilNet/datasets/sandboil_augmented_5_8_23_6853.zip)
+- Unzip and copy dataset from the respecitve experiment into the folder **datasets** inside the root folder **SandBoilNet**.
+
+
+## Download trained models
+- [All IEEE Access Models](https://cs.uno.edu/~mpanta1/SandBoilNet/models/IEEE_models.zip)
+- Unzip and copy models from respective experiment to **models** inside the root folder **SandBoilNet**.
+
 ## Folder Structure
 ```
 SandBoilNet/
@@ -51,18 +64,6 @@ SandBoilNet/
             unet_bce_dice_loss/
 
 ```
-
-## Download datasets
-- [Original Training Data](https://cs.uno.edu/~mpanta1/SandBoilNet/datasets/train.zip) 
-- [Original Test Data](https://cs.uno.edu/~mpanta1/SandBoilNet/datasets/test.zip) 
-- [Augmented Train and Validation Data](https://cs.uno.edu/~mpanta1/SandBoilNet/datasets/sandboil_augmented_5_8_23_6853.zip)
-- Unzip and copy dataset from the respecitve experiment into the folder **datasets** inside the root folder **SandBoilNet**.
-
-
-## Download trained models
-- [All IEEE Access Models](https://cs.uno.edu/~mpanta1/SandBoilNet/models/IEEE_models.zip)
-- Unzip and copy models from respective experiment to **models** inside the root folder **SandBoilNet**.
-- Your directory structure should look like this:
 
 ## Training
 - To replicate the training procedure, follow following command line.
