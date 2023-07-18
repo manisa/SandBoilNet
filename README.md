@@ -39,7 +39,7 @@ SandBoilNet/
 	archs/
 	lib/
 	datasets/
-		sandboil_augmented_5_8_23_6853/
+        sandboil_augmented_5_8_23_6853/
         test/
 	models/
         IEEE_models/
